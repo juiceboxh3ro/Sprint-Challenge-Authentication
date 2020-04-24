@@ -6,10 +6,10 @@ const Users = require("../users/users-model");
 
 router.post('/register', (req, res) => {
   let user = req.body
-
   if(user.username !== "") {
     const rounds = 12;
   
+    console.log(user)
     user.password = bcrypt.hashSync(user.password, rounds)
   
     Users.add(user)

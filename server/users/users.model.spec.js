@@ -8,7 +8,7 @@ describe('server', function() {
   })
 
   describe('GET /', () => {
-    it('should return 200 and "up"', async () => {
+    it('should return 200 and "up"', () => {
       return request(server)
       .get('/')
       .then(res => {
@@ -18,7 +18,7 @@ describe('server', function() {
   });
 
   describe('POST /register', () => {
-    it('adds a new user and gets 201', async () => {
+    it('adds a new user and gets 201', () => {
       return request(server)
         .post('/api/auth/register')
         .send({
@@ -39,6 +39,7 @@ describe('server', function() {
           expect(res.status).toBe(500)
         })
     });
+
   }); // end of register
 
   describe('POST /api/auth/login', () => {

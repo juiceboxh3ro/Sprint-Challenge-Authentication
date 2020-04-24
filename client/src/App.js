@@ -29,7 +29,7 @@ function App() {
     e.preventDefault()
     const creds = JSON.stringify(values)
     console.log(creds)
-    eventService.login(creds)
+    eventService.register(creds)
 
     .then(res => {
       console.log(res)
@@ -41,17 +41,18 @@ function App() {
   return (
     <div className="App">
       <form>
-      <div>
+        <div className="inputs">
           <label htmlFor="name">Username</label>
           <input onChange={handleChanges} name="username" id="name" type="text"/>
         </div>
-        <div>
+        <div className="inputs">
           <label htmlFor="password">Password</label>
           <input onChange={handleChanges} name="password" id="password" type="text"/>
         </div>
-
-        <button onClick={handleLogin}>Login</button>
-        <button onClick={handleRegister}>Register</button>
+        <div id="reg-buttons">
+          <button className="reg-button" onClick={handleLogin}>Login</button>
+          <button className="reg-button" onClick={handleRegister}>Register</button>
+        </div>
       </form>
 
       <Jokes />

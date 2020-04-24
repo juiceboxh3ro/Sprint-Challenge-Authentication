@@ -13,18 +13,16 @@ const Jokes = () => {
   }
 
 return (
-  <>
-  <div>
-    <button onClick={getDadJokes} props={jokes} >Jokes</button>
+  <div id="joke-box">
+    <button id="joke-button" onClick={getDadJokes}>Jokes</button>
+    <div id="jokes">
+      {jokes.map(joke => (
+        <div id="joke" key={joke.id}>
+          <p>{joke.joke}</p>
+        </div>
+      ))}
+    </div>
   </div>
-  <div>
-    {jokes.map(joke => (
-      <div key={joke.id}>
-        <p>{joke.joke}</p>
-      </div>
-    ))}
-  </div>
-  </>
 )
 }
 
