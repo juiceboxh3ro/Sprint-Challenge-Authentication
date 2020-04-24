@@ -1,6 +1,8 @@
 const axios = require('axios');
-
 const router = require('express').Router();
+const passportChecker = require('../auth/authenticate-middleware')
+
+router.use(passportChecker)
 
 router.get('/', (req, res) => {
   const requestOptions = {
