@@ -34,27 +34,36 @@ Follow these steps for completing your project.
 
 Commit your code regularly and use descriptive messages. This helps both you (in case you ever need to return to old code) and your Team Lead.
 
+
+
+
+
 ## Self-Study/Essay Questions
 
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] What is the purpose of using _sessions_?
 
-
+  sessions allows our app to recognize that a user is logged in
 
 - [ ] What does bcrypt do to help us store passwords in a secure manner.
 
-  bcrypt hashes and obscures passwords
+  bcrypt hashes and obscures passwords in our database. it can also interpret the hashed passwords.
 
 - [ ] What does bcrypt do to slow down attackers?
 
-
+  because the passwords are obscured the attacker will have a hard time figuring out the password. this is thanks to the hashing and rounds of hashing that a password goes through.
 
 - [ ] What are the three parts of the JSON Web Token?
 
   header.payload.signature
 
-  
+
+
+
+
+
+
 
 ## Minimum Viable Product
 
@@ -62,7 +71,7 @@ Implement an User Authentication System. Hash user's passwords before saving the
 
 - [ ] Implement the `register` and `login` functionality inside `/auth/auth-router.js`. A `user` has `username` and `password`. Both properties are required.
 - [ ] Implement the `authenticate` middleware inside `/auth/authenticate-middleware.js`.
-- [ ] Write a **minimum o 2 tests** per API endpoint. Write more tests if you have time.
+- [ ] Write a **minimum of 2 tests** per API endpoint. Write more tests if you have time.
 
 **Note**: the database already has the users table, but if you run into issues, the migrations are available.
 

@@ -1,24 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import eventService from './services/eventServices'
+import Jokes from './components/Jokes'
 
 function App() {
+  const [values, setValues] = useState({
+    username: "",
+    password: ""
+  })
+
+  const handleChanges = (e) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+    const creds = JSON.stringify(values)
+    eventService.login(creds)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => console.error(err.message))
+  }
+
+  const handleRegister = (e) => {
+    e.preventDefault()
+    const creds = JSON.stringify(values)
+    console.log(creds)
+    eventService.login(creds)
+
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => console.error(err.message))
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form>
+      <div>
+          <label htmlFor="name">Username</label>
+          <input onChange={handleChanges} name="username" id="name" type="text"/>
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <input onChange={handleChanges} name="password" id="password" type="text"/>
+        </div>
+
+        <button onClick={handleLogin}>Login</button>
+        <button onClick={handleRegister}>Register</button>
+      </form>
+
+      <Jokes />
     </div>
   );
 }

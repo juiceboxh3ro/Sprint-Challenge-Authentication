@@ -7,17 +7,19 @@ const Users = require("../users/users-model");
 router.post('/register', (req, res) => {
   let user = req.body
 
-  const rounds = process.env.HASH_ROUNDS || 12;
-
-  user.password = bcrypt.hashSync(user.password, rounds)
-
-  Users.add(user)
-  .then(saved => {
-    res.status(201).json(saved)
-  })
-  .catch(err => {
-    res.status(500).json({ error: err.message })
-  })
+  if(user.username !== "") {
+    const rounds = 12;
+  
+    user.password = bcrypt.hashSync(user.password, rounds)
+  
+    Users.add(user)
+    .then(saved => {
+      res.status(201).json(saved)
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message })
+    })
+  }
 })
 
 router.post('/login', (req, res) => {
